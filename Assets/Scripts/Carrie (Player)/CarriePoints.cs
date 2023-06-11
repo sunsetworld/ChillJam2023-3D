@@ -19,6 +19,13 @@ public class CarriePoints : MonoBehaviour
     {
         _playerPoints += pointsToProvide;
     }
-
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            AddPlayerPoints(1);
+            Debug.Log("Player Points: " + _playerPoints);
+        }
+    }
 }
