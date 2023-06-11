@@ -154,7 +154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4287688722527180329}
-  m_LocalRotation: {x: 0.07172876, y: -0.056986444, z: 0.004104862, w: 0.9957865}
+  m_LocalRotation: {x: 0.07172827, y: -0.056989517, z: 0.004105057, w: 0.9957863}
   m_LocalPosition: {x: 0.4266649, y: 2.58, z: -3.715583}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -162,7 +162,7 @@ Transform:
   - {fileID: 5247140792294780345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.24, y: -6.551, z: 0}
 --- !u!20 &4682385588381894673
 Camera:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6183692703771987960}
-  m_LocalRotation: {x: 0.15675105, y: -0.05642545, z: 0.008970477, w: 0.9859842}
+  m_LocalRotation: {x: 0.15675105, y: -0.056425467, z: 0.008970479, w: 0.9859842}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -468,6 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5247140792294780345}
   - component: {fileID: 7415549206348996067}
+  - component: {fileID: 1153829188296722977}
   m_Layer: 0
   m_Name: ThirdPersonCam
   m_TagString: Untagged
@@ -598,6 +599,36 @@ MonoBehaviour:
   - {fileID: 4445503351044278713}
   - {fileID: 1467509816681415308}
   - {fileID: 7608266326217967245}
+--- !u!114 &1153829188296722977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6811992548178411391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0.5
+  m_DampingWhenOccluded: 0.5
+  m_OptimalTargetDistance: 0
 --- !u!1 &7415960263728792959
 GameObject:
   m_ObjectHideFlags: 3
@@ -622,7 +653,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7415960263728792959}
-  m_LocalRotation: {x: -0.009061821, y: -0.057131726, z: -0.0005185859, w: 0.9983254}
+  m_LocalRotation: {x: -0.009061851, y: -0.057131764, z: -0.00051858765, w: 0.9983254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
