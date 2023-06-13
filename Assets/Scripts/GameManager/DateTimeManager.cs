@@ -56,6 +56,16 @@ public class DateTimeManager : MonoBehaviour
         return _gameDate;
     }
 
+    public int GetGameHour()
+    {
+        return gameHour;
+    }
+
+    public int GetGameMinute()
+    {
+        return _gameMinute;
+    }
+
     void UpdateSky()
     {
         if (gameHour >= 0 && gameHour <= 5)

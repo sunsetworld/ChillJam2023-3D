@@ -13,11 +13,14 @@ public class CarrieMovement : MonoBehaviour
     [SerializeField] private float camXMultiplier = 1f;
     [SerializeField] private float camYMultiplier = 1f;
 
+    private float _camXSpeed;
+    private float _camYSpeed;
+
     private void Start()
     {
         _cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
-        _cinemachineFreeLook.m_XAxis.m_MaxSpeed *= camXMultiplier;
-        _cinemachineFreeLook.m_YAxis.m_MaxSpeed *= camYMultiplier;
+        _camXSpeed = _cinemachineFreeLook.m_XAxis.m_MaxSpeed * camXMultiplier;
+        _camYSpeed = _cinemachineFreeLook.m_YAxis.m_MaxSpeed * camYMultiplier;
     }
 
     // Update is called once per frame
@@ -37,6 +40,17 @@ public class CarrieMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, newAngle, 0f);
             Vector3 moveDirection = Quaternion.Euler(0f, newTargetAngle, 0f) * Vector3.forward;
             playerController.Move(moveDirection.normalized * (playerSpeed * Time.deltaTime));
+        }
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            _cinemachineFreeLook.m_XAxis.m_MaxSpeed = _camXSpeed;
+            _cinemachineFreeLook.m_YAxis.m_MaxSpeed = _camYSpeed;
+        }
+        else
+        {
+            _cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0;
+            _cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0;
         }
     }
 }
