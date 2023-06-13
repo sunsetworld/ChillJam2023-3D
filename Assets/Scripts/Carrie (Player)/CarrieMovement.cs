@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class CarrieMovement : MonoBehaviour
@@ -7,6 +8,17 @@ public class CarrieMovement : MonoBehaviour
     public float playerSpeed = 10f;
     public float rotationSmoothTime = 0.1f;
     public float rotationSmoothVelocity;
+
+    private CinemachineFreeLook _cinemachineFreeLook;
+    [SerializeField] private float camXMultiplier = 1f;
+    [SerializeField] private float camYMultiplier = 1f;
+
+    private void Start()
+    {
+        _cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
+        _cinemachineFreeLook.m_XAxis.m_MaxSpeed *= camXMultiplier;
+        _cinemachineFreeLook.m_YAxis.m_MaxSpeed *= camYMultiplier;
+    }
 
     // Update is called once per frame
     void Update()

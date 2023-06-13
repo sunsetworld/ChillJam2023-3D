@@ -1,6 +1,10 @@
 using UnityEngine;
 public class DateTimeManager : MonoBehaviour
 {
+    [SerializeField] private Material skyboxDay;
+    [SerializeField] private Material skyboxNight;
+    
+    
     private int _gameDate = 1;
     
     [SerializeField] private int gameHour = 6;
@@ -8,6 +12,8 @@ public class DateTimeManager : MonoBehaviour
     private int _gameMinute;
 
     [SerializeField] private int timeMultiplier = 2;
+    
+    
 
     private void Start()
     {
@@ -40,11 +46,29 @@ public class DateTimeManager : MonoBehaviour
             {
                 gameHour += 1;
             }
+            
+            UpdateSky();
         }
     }
 
     public int GetGameDate()
     {
         return _gameDate;
+    }
+
+    void UpdateSky()
+    {
+        if (gameHour >= 0 && gameHour <= 5)
+        {
+            RenderSettings.skybox = skyboxNight;
+        }
+        else if (gameHour >= 6 && gameHour <= 17)
+        {
+            RenderSettings.skybox = skyboxDay;
+        }
+        else if (gameHour >= 18 && gameHour <= 23)
+        {
+            RenderSettings.skybox = skyboxNight;
+        }
     }
 }
