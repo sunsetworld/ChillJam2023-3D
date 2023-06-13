@@ -100,6 +100,8 @@ MonoBehaviour:
   playerSpeed: 12
   rotationSmoothTime: 0.1
   rotationSmoothVelocity: 0
+  camXMultiplier: 5
+  camYMultiplier: 5
 --- !u!114 &3972437290358111061
 MonoBehaviour:
   m_ObjectHideFlags: 0
