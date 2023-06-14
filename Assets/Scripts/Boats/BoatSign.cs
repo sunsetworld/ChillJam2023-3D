@@ -20,6 +20,7 @@ public class BoatSign : MonoBehaviour
             GameObject newBoat = Instantiate(boatObj,newBoatPos, quaternion.identity);
             Transform playerTransform = _carrieMovement.gameObject.transform;
             playerTransform.position = newBoat.transform.position + new Vector3(0, playerOffsetY, 0);
+            playerTransform.rotation = Quaternion.Euler(0, 180, 0);
             _carrieMovement.DisablePlayerMovement();
         }
     }
