@@ -9,15 +9,21 @@ public class DateTimeManager : MonoBehaviour
     
     [SerializeField] private int gameHour = 6;
 
-    private int _gameMinute;
+    private float _gameMinute;
 
     [SerializeField] private int timeMultiplier = 2;
+
+    private GameManager _gameManager;
     
     
 
     private void Start()
     {
-        _gameDate = PlayerPrefs.GetInt("Date");
+        _gameManager = GetComponent<GameManager>();
+        if (!_gameManager.GetNewGame())
+        {
+            _gameDate = PlayerPrefs.GetInt("Date");
+        }
     }
 
     // Update is called once per frame
@@ -30,9 +36,9 @@ public class DateTimeManager : MonoBehaviour
     {
         if (_gameMinute <= 59)
         {
-            _gameMinute += timeMultiplier;
+            _gameMinute += timeMultiplier * Time.deltaTime;
         }
-        else if (_gameMinute == 60)
+        else
         {
             _gameMinute = 0;
             if (gameHour + 1 == 24)
@@ -61,7 +67,7 @@ public class DateTimeManager : MonoBehaviour
         return gameHour;
     }
 
-    public int GetGameMinute()
+    public float GetGameMinute()
     {
         return _gameMinute;
     }

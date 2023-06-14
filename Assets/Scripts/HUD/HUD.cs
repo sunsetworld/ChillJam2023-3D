@@ -19,11 +19,16 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        NewHUDMessage();
+    }
+
+    private void NewHUDMessage()
+    {
         if (_dateTimeManager != null && _carriePoints != null)
         {
-            string newHudMessage = "Minute: " + _dateTimeManager.GetGameMinute() 
-                                              + "\nHour: " + _dateTimeManager.GetGameHour() 
-                                              + "\nDate: " + _dateTimeManager.GetGameDate() 
+            string newHudMessage = "Minute: " + (int)_dateTimeManager.GetGameMinute()
+                                              + "\nHour: " + _dateTimeManager.GetGameHour()
+                                              + "\nDate: " + _dateTimeManager.GetGameDate()
                                               + "\nPoints: " + _carriePoints.GetPlayerPoints();
             hudTxt.text = newHudMessage;
         }
