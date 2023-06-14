@@ -80,12 +80,10 @@ public class CarrieMovement : MonoBehaviour
     public void EnablePlayerMovement()
     {
         canMove = true;
-        canRotate = true;
     }
 
     public void DisablePlayerMovement()
     {
         canMove = false;
-        canRotate = false;
     }
 }
