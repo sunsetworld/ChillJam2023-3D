@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class CarrieMovement : MonoBehaviour
     public float playerSpeed = 10f;
     public float rotationSmoothTime = 0.1f;
     public float rotationSmoothVelocity;
+    private CrabLand _crabLand;
 
     private CinemachineFreeLook _cinemachineFreeLook;
     [SerializeField] private float camXMultiplier = 1f;
@@ -17,6 +19,11 @@ public class CarrieMovement : MonoBehaviour
 
     private float _camXSpeed;
     private float _camYSpeed;
+
+    private void Awake()
+    {
+        _crabLand = new CrabLand();
+    }
 
     private void Start()
     {
@@ -38,8 +45,8 @@ public class CarrieMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = _crabLand.Player.Move.ReadValue<Vector2>().x;
+        float verticalInput = _crabLand.Player.Move.ReadValue<Vector2>().y;
         Vector3 newDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
         if (newDirection.magnitude >= 0.1f)
         {
@@ -59,13 +66,13 @@ public class CarrieMovement : MonoBehaviour
                 playerController.Move(moveDirection.normalized * (playerSpeed * Time.deltaTime));
             }
         }
-
-        SetCameraRotationSpeed();
+        
+        GetCameraRotation();
     }
 
-    private void SetCameraRotationSpeed()
+    void GetCameraRotation()
     {
-        if (Input.GetKey(KeyCode.Mouse1) && canRotate)
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             _cinemachineFreeLook.m_XAxis.m_MaxSpeed = _camXSpeed;
             _cinemachineFreeLook.m_YAxis.m_MaxSpeed = _camYSpeed;
@@ -76,7 +83,7 @@ public class CarrieMovement : MonoBehaviour
             _cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0;
         }
     }
-
+    
     public void EnablePlayerMovement()
     {
         canMove = true;
@@ -85,5 +92,15 @@ public class CarrieMovement : MonoBehaviour
     public void DisablePlayerMovement()
     {
         canMove = false;
+    }
+
+    private void OnEnable()
+    {
+        _crabLand.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _crabLand.Disable();
     }
 }

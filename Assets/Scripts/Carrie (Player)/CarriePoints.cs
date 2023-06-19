@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CarriePoints : MonoBehaviour
 {
+    [SerializeField] private AudioClip hitClip;
     private int _playerPoints = 0;
 
     private void Start()
@@ -25,6 +26,7 @@ public class CarriePoints : MonoBehaviour
         {
             Destroy(other.gameObject);
             AddPlayerPoints(1);
+            AudioSource.PlayClipAtPoint(hitClip, transform.position);
             Debug.Log("Player Points: " + _playerPoints);
         }
     }
